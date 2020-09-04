@@ -71,12 +71,8 @@ public class MainActivity extends AppCompatActivity {
         vp2Content.setAdapter(adapter);
 
         // ViewPager2关联TabLayout
-        new TabLayoutMediator(tlNavigation, vp2Content, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText(mTitles.get(position));
-            }
-        }).attach();
+        new TabLayoutMediator(tlNavigation, vp2Content,
+                (tab, position) -> tab.setText(mTitles.get(position))).attach();
     }
 
     private void initData() {
